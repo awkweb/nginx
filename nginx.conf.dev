@@ -16,23 +16,13 @@ http {
 	types_hash_max_size 2048;
 
 	##
-	# SSL Settings
-	##
-
-    ssl_certificate             ${SSL_CERTIFICATE};
-    ssl_certificate_key         ${SSL_CERTIFICATE_KEY};
-    ssl_ciphers                 HIGH+kEECDH+AESGCM:HIGH+kEECDH:HIGH+kEDH:HIGH:!aNULL;
-	ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
-	ssl_prefer_server_ciphers   on;
-
-	##
-	# Logging Settings
+	# Logging
 	##
 
 	access_log  /var/log/nginx/access.log;
 	error_log   /var/log/nginx/error.log;
 
-    ##
+	##
 	# Gzip Settings
 	##
 
@@ -45,9 +35,19 @@ http {
 	gzip_http_version   1.1;
 	gzip_types          text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 
+    ##
+    # SSL Settings
+    ##
+
+    ssl_certificate             ${SSL_CERTIFICATE};
+    ssl_certificate_key         ${SSL_CERTIFICATE_KEY};
+    ssl_ciphers                 HIGH+kEECDH+AESGCM:HIGH+kEECDH:HIGH+kEDH:HIGH:!aNULL;
+    ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers   on;
+
 	##
 	# Virtual Host Configs
 	##
 
-    include /etc/nginx/sites-enabled/index;
+    include /etc/nginx/sites-enabled/dev/*;
 }

@@ -1,2 +1,4 @@
 .circleci
-nginx.tmpl
+.gitignore
+README.md
+nginx.conf.dev

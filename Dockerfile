@@ -1,6 +1,7 @@
-# Start from nginx image
 FROM nginx
 
-COPY . /etc/nginx
+WORKDIR /etc/nginx
+
+ADD . /etc/nginx
 
 VOLUME /etc/nginx

@@ -1,4 +1,2 @@
 .DS_Store
 .vscode
-certs/letsencrypt/wilbur.crt
-certs/letsencrypt/wilbur.key
