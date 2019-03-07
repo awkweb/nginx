@@ -77,7 +77,7 @@ jobs:
           family: "wilbur-prod-api"
           cluster-name: "wilbur-prod"
           service-name: "api"
-          container-image-name-updates: "container=api,image-and-tag=${FULL_IMAGE_URL}"
+          container-image-name-updates: "container=nginx,image-and-tag=${FULL_IMAGE_URL}"
 workflows:
   build-deploy:
     jobs:
