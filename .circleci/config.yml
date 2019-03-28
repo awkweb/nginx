@@ -5,7 +5,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@0.0.6
 defaults: &defaults
   docker:
-    - image: circleci/python:3.6.1
+    - image: circleci/python:3.7.2
 references:
   - &set_up_environment_variables
     run:
@@ -33,7 +33,7 @@ references:
     aws-cli/configure:
       aws-access-key-id: $AWS_ACCESS_KEY_ID
       aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
-      aws-region: "$AWS_DEFAULT_REGION"
+      aws-region: '$AWS_DEFAULT_REGION'
 jobs:
   build:
     <<: *defaults
@@ -43,7 +43,7 @@ jobs:
       - *set_up_environment_variables
       - aws-ecr/build-image:
           account-url: ACCOUNT_URL
-          dockerfile: ".circleci/Dockerfile"
+          dockerfile: '.circleci/Dockerfile'
           repo: $AWS_ECR_REPOSITORY_NAME
           tag: $CIRCLE_SHA1
       - *save_image_to_archive
@@ -74,10 +74,10 @@ jobs:
       - *aws_configure
       - *set_up_environment_variables
       - aws-ecs/update-service:
-          family: "butter-prod-api"
-          cluster-name: "butter-prod"
-          service-name: "api"
-          container-image-name-updates: "container=nginx,image-and-tag=${FULL_IMAGE_URL}"
+          family: 'butter-prod-api'
+          cluster-name: 'butter-prod'
+          service-name: 'api'
+          container-image-name-updates: 'container=nginx,image-and-tag=${FULL_IMAGE_URL}'
 workflows:
   build-deploy:
     jobs:
